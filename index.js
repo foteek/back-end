@@ -51,10 +51,8 @@ server.use("/users", graphqlHttp({
         })
 
         return user.save().then(res => {
-          console.log(res)
           return res
         }).catch(err => {
-          console.log(err)
           throw err
         })
       }
@@ -67,10 +65,8 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
   useNewUrlParser: true }
 )
 .then(() => {
-    server.listen(3000, () => {
-    console.log('Listening on port 3000')
-  })
+    server.listen(3000)
 })
 .catch(err => {
-  console.log(err)
+  throw err
 })
