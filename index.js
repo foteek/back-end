@@ -9,7 +9,7 @@ const server = express();
 
 server.use(express.json())
 
-server.use("/graphql", graphqlHttp({
+server.use("/users", graphqlHttp({
   schema: buildSchema(`
     type User {
       _id: ID!
