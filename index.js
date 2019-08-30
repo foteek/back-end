@@ -4,6 +4,7 @@ const graphqlHttp = require("express-graphql");
 const mongoose = require("mongoose")
 const { buildSchema } = require("graphql");
 const User = require('./models/user')
+const port = process.env.PORT || 3000
 
 const server = express();
 
@@ -61,11 +62,11 @@ server.use("/users", graphqlHttp({
 }))
 
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@foteekcluster-nv3fj.mongodb.net/test?retryWrites=true&w=majority`, {
+mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@foteekcluster-nv3fj.mongodb.net/test?retryWrites=true&w=majority`, {
   useNewUrlParser: true }
 )
 .then(() => {
-    server.listen(3000)
+    server.listen(port)
 })
 .catch(err => {
   throw err
