@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const graphqlHttp = require("express-graphql");
+const { graphqlExpress } = require('apollo-server-express')
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { buildSchema } = require("graphql");
